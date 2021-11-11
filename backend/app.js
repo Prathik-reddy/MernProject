@@ -1,18 +1,11 @@
 const express = require('express');
-const mongoose = require('mongoose');
+const dotenv = require('dotenv');
 
+dotenv.config({path:"./.env"});
 const app = express();
-const port = 8000;
-const DB = "mongodb+srv://Prathik:Prathik%4010mondb@cluster0.wr5r0.mongodb.net/mernProject?retryWrites=true&w=majority";
+const PORT = process.env.PORT || 8000;
+require('./db/conn');
 
-mongoose.connect(DB,{
-    useNewUrlParser: true,
-    // useCreateIndex: true,
-    useUnifiedTopology: true,
-    // useFindAndModify: false
-})
-.then(()=> {console.log("Connected to Mongo successfully");})
-.catch((error)=> {console.log("Error Occured "+error)});
 
 const  middleware = (req,res,next) => {
     console.log("hello from middleware");
@@ -40,6 +33,6 @@ app.get('/signup', (req, res) => {
     res.send('Welcome to MERN Project signup page')
 })
 
-app.listen(port,(req, res) => {
-    console.log("hello from mern project ");
+app.listen(PORT,(req, res) => {
+    console.log(`Server running on port ${PORT} ` );
 });
