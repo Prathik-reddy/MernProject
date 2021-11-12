@@ -6,15 +6,15 @@ const app = express();
 const PORT = process.env.PORT || 8000;
 require('./db/conn');
 
+// to get the data which is in json format
+app.use(express.json());
+//Linking the routes from auth.js file
+app.use(require("./Routes/auth"))
 
 const  middleware = (req,res,next) => {
     console.log("hello from middleware");
     next();
 }
-
-app.get('/', (req, res) => {
-    res.send('Welcome to MERN Project')
-})
 
 app.get('/about',middleware, (req, res) => {
     console.log("Welcome to about");
