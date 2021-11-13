@@ -1,26 +1,30 @@
 const express = require("express");
 const router = express.Router();
 const bcrypt = require("bcryptjs");
-const User = require("../models/UserSchema")
+const User = require("../models/UserSchema");
+const jwt = require("jsonwebtoken");
 
 router.get("/", (req, res) => {
     res.send("hello frm home page")
 })
 
 router.post("/register", async (req, res) => {
-    const {name,email,phone,work,password,cpassword} = req.body;
+    const {
+        name,email,phone,work,password,cpassword} = req.body;
     if (!name || !email || !phone || !work || !password || !cpassword) {
-       return res.status(422).send("Error in data received ");
+        return res.status(422).send("Error in data received ");
     }
-    if(!(password==cpassword)) {
+    if (!(password == cpassword)) {
         return res.status(422).send("Error in password received ");
     }
     try {
-        const response = await User.findOne({email})
-        if(response){
+        const response = await User.findOne({
+            email
+        })
+        if (response) {
             return res.status(422).json("User with this email id is already registered");
         }
-        const user =  new User({name, email, phone, work, password, cpassword})
+        const user = new User({name,email,phone,work,password,cpassword})
         // hashing password using a middleware
         const userReg = await user.save();
         return res.status(200).json(userReg);
@@ -30,20 +34,29 @@ router.post("/register", async (req, res) => {
 })
 
 // login Route
-router.post("/login",async(req,res)=>{
-    try{
-        const {email,password}=req.body;
-        const emailResp = await User.findOne({email})
-        if(!email || !password){
+router.post("/login", async (req, res) => {
+    try {
+        const {email,password} = req.body;
+        const emailResp = await User.findOne({email});
+        console.log(emailResp);
+        if (!email || !password) {
             return res.status(422).send("Error in data received ");
         }
-        const isMatch = await bcrypt.compare(password,emailResp.password);
-        if(isMatch){
-            return res.send(emailResp);
+        // checking if the password stored in the db and the password entered at the login time is same
+        if (emailResp) {
+            const isMatch = await bcrypt.compare(password, emailResp.password);
+
+            if (isMatch) {
+                const token = await emailResp.generateAuthToken();
+                console.log("token is " + token);
+                res.send(emailResp);
+            } else {
+                return res.status(400).send("login failed");
+            }
         }else{
-            return res.status(400).send("login failed")
+            res.status(400).send("invalid credentials");
         }
-    }catch (error) {
+    } catch (error) {
         return res.status(404).send("Login failed : " + error);
     }
 })
