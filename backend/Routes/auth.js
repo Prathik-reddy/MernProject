@@ -24,4 +24,22 @@ router.post("/register", async (req, res) => {
     }
 })
 
+// login Route
+router.post("/login",async(req,res)=>{
+    try{
+        const {email,password}=req.body;
+        const response = await User.findOne({email})
+        if(!email || !password){
+            return res.status(422).send("Error in data received ");
+        }
+        if(response){
+            return res.send("login successful"+response);
+        }else{
+            return res.status(400).send("login failed")
+        }
+    }catch (error) {
+        return res.status(404).send("Login failed : " + error);
+    }
+})
+
 module.exports = router;
