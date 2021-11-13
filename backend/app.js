@@ -9,14 +9,9 @@ require('./db/conn');
 // to get the data which is in json format
 app.use(express.json());
 //Linking the routes from auth.js file
-app.use(require("./Routes/auth"))
+app.use(require("./Routes/auth"));
 
-const  middleware = (req,res,next) => {
-    console.log("hello from middleware");
-    next();
-}
-
-app.get('/about',middleware, (req, res) => {
+app.get('/about', (req, res) => {
     console.log("Welcome to about");
     res.send('Welcome to MERN Project about page')
 })
