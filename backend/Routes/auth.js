@@ -49,6 +49,10 @@ router.post("/login", async (req, res) => {
             if (isMatch) {
                 const token = await emailResp.generateAuthToken();
                 console.log("token is " + token);
+                res.cookie("mernCookie",token,{
+                    expires:new Date(Date.now()+25892000000 ),//30 days
+                    httpOnly:true
+                });
                 res.send(emailResp);
             } else {
                 return res.status(400).send("login failed");
