@@ -27,7 +27,7 @@ const SignUp = () => {
                             <input type="password" class="form-control" placeholder="Confirm Password" />
                         </div>
                         <div class="col-md-6 m-2">
-                            <input type="submit" class="form-control bg-primary" placeholder="Submit" />
+                            <input type="submit" class="form-control bg-primary" value="SignUp" />
                         </div>
                     </div>
                 </form>
