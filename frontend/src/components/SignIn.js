@@ -7,15 +7,15 @@ const SignIn = () => {
             <div className="container">
                 <h1 className="p-5">SignIn here</h1>
                 <form>
-                    <div class="row justify-content-center">
-                        <div class="col-md-6 m-2">
-                            <input type="email" class="form-control" placeholder="Email" />
+                    <div className="row justify-content-center">
+                        <div className="col-md-6 m-2">
+                            <input type="email" className="form-control" placeholder="Email" />
                         </div>
-                        <div class="col-md-6 m-2">
-                            <input type="password" class="form-control" placeholder="Password" />
+                        <div className="col-md-6 m-2">
+                            <input type="password" className="form-control" placeholder="Password" />
                         </div>
-                        <div class="col-md-6 m-2 ">
-                            <input type="submit" class="form-control bg-primary" value="SignIn" />
+                        <div className="col-md-6 m-2 ">
+                            <input type="submit" className="form-control bg-primary" value="SignIn" />
                         </div>
                     </div>
                 </form>
