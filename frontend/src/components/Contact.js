@@ -7,18 +7,18 @@ const Contact = () => {
             <div className="container">
                 <h1 className="p-5">Contact Us</h1>
                 <form>
-                    <div class="row justify-content-center">
-                        <div class="col-md-6 m-2">
-                            <input type="text" class="form-control" placeholder="Name" />
+                    <div className="row justify-content-center">
+                        <div className="col-md-6 m-2">
+                            <input type="text" className="form-control" placeholder="Name" />
                         </div>
-                        <div class="col-md-6 m-2">
-                            <input type="email" class="form-control" placeholder="Email" />
+                        <div className="col-md-6 m-2">
+                            <input type="email" className="form-control" placeholder="Email" />
                         </div>
-                        <div class="col-md-6 m-2">
-                            <input type="text" class="form-control" placeholder="Your Message" />
+                        <div className="col-md-6 m-2">
+                            <input type="text" className="form-control" placeholder="Your Message" />
                         </div>
-                        <div class="col-md-6 m-2">
-                            <input type="submit" class="form-control bg-primary" value="Contact Us" />
+                        <div className="col-md-6 m-2">
+                            <input type="submit" className="form-control bg-primary" value="Contact Us"/>
                         </div>
                     </div>
                 </form>
