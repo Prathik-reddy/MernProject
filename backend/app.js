@@ -11,10 +11,10 @@ app.use(express.json());
 //Linking the routes from auth.js file
 app.use(require("./Routes/auth"));
 
-app.get('/about', (req, res) => {
-    console.log("Welcome to about");
-    res.send('Welcome to MERN Project about page')
-})
+// app.get('/about', (req, res) => {
+//     console.log("Welcome to about");
+//     res.send('Welcome to MERN Project about page')
+// })
 
 app.get('/contact', (req, res) => {
     res.send('Welcome to MERN Project contact page')

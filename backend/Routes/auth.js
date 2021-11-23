@@ -3,6 +3,7 @@ const router = express.Router();
 const bcrypt = require("bcryptjs");
 const User = require("../models/UserSchema");
 const jwt = require("jsonwebtoken");
+const authenticate = require("../middleware/authenticate")
 
 router.get("/", (req, res) => {
     res.send("hello frm home page")
@@ -64,5 +65,10 @@ router.post("/login", async (req, res) => {
         return res.status(404).send("Login failed : " + error);
     }
 })
+// About us page
+router.get('/about',authenticate, (req, res) => {
+    res.send('Welcome to MERN Project about page')
+})
+
 
 module.exports = router;
