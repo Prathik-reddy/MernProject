@@ -1,9 +1,10 @@
-const jwt = require('jsonwebtoken');
+const jwt = require("jsonwebtoken");
 const User = require("../models/UserSchema");
+const router = require("../Routes/auth");
 
 const Authenticate = async (req, res, next) => {
     try {
-        const token = req.cookies.mernCookie;
+        const token = req.cookies.mern;
         const verifyToken = jwt.verify(token,process.env.SECRET_KEY);
         const rootUser = await User.findOne({_id:verifyToken._id,"tokens.token":token});
 
@@ -11,7 +12,7 @@ const Authenticate = async (req, res, next) => {
             throw new Error("User not found");
         }
         req.token = token;
-        req.rootUser= rootUser;
+        req.rootUser = rootUser;
         req.userId=rootUser._id;
         next();
     } catch (error) {

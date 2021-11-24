@@ -4,6 +4,9 @@ const bcrypt = require("bcryptjs");
 const User = require("../models/UserSchema");
 const jwt = require("jsonwebtoken");
 const authenticate = require("../middleware/authenticate")
+const cookieParser = require("cookie-parser");
+
+router.use(cookieParser());
 
 router.get("/", (req, res) => {
     res.send("hello frm home page")
@@ -50,7 +53,7 @@ router.post("/login", async (req, res) => {
             if (isMatch) {
                 const token = await emailResp.generateAuthToken();
                 console.log("token is " + token);
-                res.cookie("mernCookie",token,{
+                res.cookie("mern",token,{
                     expires:new Date(Date.now()+25892000000 ),//30 days
                     httpOnly:true
                 });
@@ -67,7 +70,7 @@ router.post("/login", async (req, res) => {
 })
 // About us page
 router.get('/about',authenticate, (req, res) => {
-    res.send('Welcome to MERN Project about page')
+    res.send(req.rootUser)
 })
 
 
