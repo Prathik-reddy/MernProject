@@ -16,9 +16,9 @@ app.use(require("./Routes/auth"));
 //     res.send('Welcome to MERN Project about page')
 // })
 
-app.get('/contact', (req, res) => {
-    res.send('Welcome to MERN Project contact page')
-})
+// app.get('/contact', (req, res) => {
+//     res.send('Welcome to MERN Project contact page')
+// })
 
 app.get('/login', (req, res) => {
     res.send('Welcome to MERN Project login page')

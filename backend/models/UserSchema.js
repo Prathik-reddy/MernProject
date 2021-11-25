@@ -27,6 +27,30 @@ const userSchema = new mongoose.Schema({
         type:String,
         required:true,
     },
+    date:{
+        type:Date,
+        default:Date.now
+    },
+    messages:[
+        {
+            name:{
+                type:String,
+                required:true,
+            },
+            email:{
+                type:String,
+                required:true,
+            },
+            phone:{
+                type:Number,
+                required:true,
+            },
+            msg:{
+                type:String,
+                required:true,
+            },
+        }
+    ],
     tokens:[{
         token:{
             type:String,
@@ -53,6 +77,16 @@ userSchema.methods.generateAuthToken = async function(){
         return tokenGen;
     } catch (error) {
         res.send(error);
+    }
+}
+// Storing the message
+userSchema.methods.addMessage = async function(name,email,phone,msg){
+    try {
+        this.messages = this.messages.concat({name,email,phone,msg});
+        await this.save();
+        return this.messages;
+    } catch (error) {
+        console.log(error);
     }
 }
 const User = mongoose.model('User',userSchema);
