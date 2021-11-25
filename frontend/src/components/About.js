@@ -1,8 +1,9 @@
-import React, { useEffect } from "react";
+import React, { useEffect ,useState} from "react";
 import { useNavigate } from "react-router-dom";
 const About = () => {
 
     let navigate = useNavigate();
+    const [userData, setuserData] = useState("");
     const callAbout = async () => {
         try {
             const res = await fetch("/about", {
@@ -15,6 +16,7 @@ const About = () => {
             });
             const data = await res.json();
             console.log(data);
+            setuserData(data);
             if (!res.status === 200) {
                 const error = new Error(res.error.message);
                 throw error;
@@ -32,7 +34,7 @@ const About = () => {
     return (
         <div>
             <div className="container mt-3 p-3 text-center w-75">
-                <h1 className="text-primary">Prathik Reddy</h1>
+                <h1 className="text-primary">Welcome {userData.name}</h1>
                 <p className="font-monospace fst-italic lh-lg ">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Obcaecati ratione velit cupiditate. Sequi aliquid provident non perferendis eius iste corrupti natus quo placeat, dolores error, delectus rerum vel voluptatum nihil.</p>
                 <hr className="text-primary" />
             </div>
@@ -105,7 +107,7 @@ const About = () => {
                                         <p>UserId : </p>
                                     </div>
                                     <div className="col-md-6 text-primary">
-                                        <p>1234567</p>
+                                        <p>{userData._id}</p>
                                     </div>
                                 </div>
                                 <div className="row">
@@ -113,7 +115,7 @@ const About = () => {
                                         <p>Name : </p>
                                     </div>
                                     <div className="col-md-6 text-primary">
-                                        <p>Prathik Reddy</p>
+                                        <p>{userData.name}</p>
                                     </div>
                                 </div>
                                 <div className="row">
@@ -121,7 +123,7 @@ const About = () => {
                                         <p>Email : </p>
                                     </div>
                                     <div className="col-md-6 text-primary">
-                                        <p>prathik@gmail.com</p>
+                                        <p>{userData.email}</p>
                                     </div>
                                 </div>
                                 <div className="row">
@@ -129,7 +131,7 @@ const About = () => {
                                         <p>Phone : </p>
                                     </div>
                                     <div className="col-md-6 text-primary">
-                                        <p>9876543210</p>
+                                        <p>{userData.phone}</p>
                                     </div>
                                 </div>
                                 <div className="row">
@@ -137,7 +139,7 @@ const About = () => {
                                         <p>Work : </p>
                                     </div>
                                     <div className="col-md-6 text-primary">
-                                        <p>Student</p>
+                                        <p>{userData.work}</p>
                                     </div>
                                 </div>
 
