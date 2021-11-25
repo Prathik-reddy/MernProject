@@ -48,14 +48,14 @@ const About = () => {
                 <hr className="text-primary" />
             </div>
             <div className="container w-75">
-                <ul className="nav nav-pills nav-fill" role="tablist">
-                    <li className="nav-item me-2">
-                        <a className="nav-link active" aria-current="page" id="home-tab" data-toggle="tab" href="#home" role="tab">About</a>
-                    </li>
-                    <li className="nav-item ms-2">
-                        <a className="nav-link active" aria-current="page" id="profile-tab" data-toggle="tab" href="#profile" role="tab">TimeLine</a>
-                    </li>
-                </ul>
+                <ul class="nav nav-tabs nav-fill" id="myTab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">About</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Timeline</button>
+                </li>
+            </ul>
                 <div className="row">
                     <div className="col-md-6 py-5">
                         <div className="row">
@@ -63,7 +63,7 @@ const About = () => {
                                 <p>Link 1 : </p>
                             </div>
                             <div className="col-md-6">
-                            <a href="http://google.com" target = "_blank">Google</a>
+                                <a href="http://google.com" target="_blank" rel="noreferrer">Google</a>
                             </div>
                         </div>
                         <div className="row">
@@ -71,34 +71,34 @@ const About = () => {
                                 <p>Link 2 : </p>
                             </div>
                             <div className="col-md-6">
-                                <a href="http://google.com" target = "_blank">Google</a>
+                                <a href="http://google.com" target="_blank" rel="noreferrer">Google</a>
                             </div>
                         </div><div className="row">
                             <div className="col-md-6">
                                 <p>Link 3 : </p>
                             </div>
                             <div className="col-md-6">
-                                <a href="http://google.com" target = "_blank">Google</a>
+                                <a href="http://google.com" target="_blank" rel="noreferrer">Google</a>
                             </div>
                         </div><div className="row">
                             <div className="col-md-6">
                                 <p>Link 4 : </p>
                             </div>
                             <div className="col-md-6">
-                                <a href="http://google.com" target = "_blank">Google</a>
+                                <a href="http://google.com" target="_blank" rel="noreferrer">Google</a>
                             </div>
                         </div><div className="row">
                             <div className="col-md-6">
                                 <p>Link 5 : </p>
                             </div>
                             <div className="col-md-6">
-                                <a href="http://google.com" target = "_blank">Google</a>
+                                <a href="http://google.com" target="_blank" rel="noreferrer">Google</a>
                             </div>
                         </div>
 
                     </div>
                     <div className="col-md-6 py-5">
-                        <div className="tabs" id="tabContent">
+                        <div className="tab-content" id="tabContent">
                             <div className="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                                 <div className="row">
                                     <div className="col-md-6">
@@ -138,6 +138,49 @@ const About = () => {
                                     </div>
                                     <div className="col-md-6 text-primary">
                                         <p>Student</p>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div className="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                                <div className="row">
+                                    <div className="col-md-6">
+                                        <p>Experience : </p>
+                                    </div>
+                                    <div className="col-md-6 text-primary">
+                                        <p>Expert</p>
+                                    </div>
+                                </div>
+                                <div className="row">
+                                    <div className="col-md-6">
+                                        <p>Hourly Prices : </p>
+                                    </div>
+                                    <div className="col-md-6 text-primary">
+                                        <p>1000/- Rs</p>
+                                    </div>
+                                </div>
+                                <div className="row">
+                                    <div className="col-md-6">
+                                        <p>Total Projects : </p>
+                                    </div>
+                                    <div className="col-md-6 text-primary">
+                                        <p>500</p>
+                                    </div>
+                                </div>
+                                <div className="row">
+                                    <div className="col-md-6">
+                                        <p>Coustomer Rating: </p>
+                                    </div>
+                                    <div className="col-md-6 text-primary">
+                                        <p>5/5</p>
+                                    </div>
+                                </div>
+                                <div className="row">
+                                    <div className="col-md-6">
+                                        <p>Work : </p>
+                                    </div>
+                                    <div className="col-md-6 text-primary">
+                                        <p>Web Developer</p>
                                     </div>
                                 </div>
 
