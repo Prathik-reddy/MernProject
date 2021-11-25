@@ -68,8 +68,14 @@ router.post("/login", async (req, res) => {
         return res.status(404).send("Login failed : " + error);
     }
 })
+
 // About us page
 router.get('/about',authenticate, (req, res) => {
+    res.send(req.rootUser)
+})
+
+// User data for contact page and home page
+router.get("/getData",authenticate, (req, res) => {
     res.send(req.rootUser)
 })
 
