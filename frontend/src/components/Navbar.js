@@ -1,6 +1,9 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { NavLink } from "react-router-dom"
+import { UserContext } from "../App";
 const Navbar = () => {
+    const { state, dispatch } = useContext(UserContext);
+    console.log(state);
     return (
         <>
             <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -20,16 +23,19 @@ const Navbar = () => {
                             <li className="nav-item">
                                 <NavLink className="nav-link active" aria-current="page" to="/Contact">Contact</NavLink>
                             </li>
-                            <li className="nav-item">
-                                <NavLink className="nav-link active" aria-current="page" to="/SignIn">SignIn</NavLink>
-                            </li>
-                            <li className="nav-item">
-                                <NavLink className="nav-link active" aria-current="page" to="/SignUp">SignUp</NavLink>
-                            </li>
-                            <li className="nav-item">
-                                <NavLink className="nav-link active" aria-current="page" to="/SignOut">SignOut</NavLink>
-                            </li>
 
+                            {!state ? <>
+                                <li className="nav-item">
+                                    <NavLink className="nav-link active" aria-current="page" to="/SignIn">SignIn</NavLink>
+                                </li>
+                                <li className="nav-item">
+                                    <NavLink className="nav-link active" aria-current="page" to="/SignUp">SignUp</NavLink>
+                                </li>
+                            </>:<>
+                                <li className="nav-item">
+                                <NavLink className="nav-link active" aria-current="page" to="/SignOut">SignOut</NavLink>
+                                </li>
+                            </>}
                         </ul>
                     </div>
                 </div>
