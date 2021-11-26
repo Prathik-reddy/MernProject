@@ -100,5 +100,11 @@ router.post("/contact",authenticate,async(req, res)=>{
      }
 })
 
+// SignOut page
+router.get('/signOut', (req, res) => {
+    res.clearCookie("mern",{path:"/"});
+    res.status(200).send("userLogout")
+})
+
 
 module.exports = router;
